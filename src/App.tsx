@@ -10,10 +10,15 @@ interface Config {
 export default function App() {
   const [config, setConfig] = useState<Config | null>(null);
   const [accessibility, setAccessibility] = useState<boolean | null>(null);
+  const [rightDist, setRightDist] = useState<number | null>(null);
 
   useEffect(() => {
     invoke<Config>("get_config").then(setConfig);
     invoke<boolean>("has_accessibility").then(setAccessibility);
+    const tick = () => invoke<number>("distance_from_right_edge").then(setRightDist);
+    tick();
+    const t = setInterval(tick, 2000);
+    return () => clearInterval(t);
   }, []);
 
   const update = async (patch: Partial<Config>) => {
@@ -42,6 +47,20 @@ export default function App() {
           <button className="btn primary" onClick={() => invoke("open_accessibility_settings")}>
             打开系统设置
           </button>
+        </section>
+      )}
+
+      {rightDist !== null && rightDist > 150 && (
+        <section className="alert">
+          <div>
+            <strong>把按钮拖到菜单栏最右</strong>
+            <p>
+              按住 <kbd>⌘</kbd> 把菜单栏里的 <code>{config?.collapsed ? "▾" : "▸"}</code> 按钮拖到最右边（紧挨 Wi-Fi/电池/时钟左侧）。
+              macOS 会记住位置，下次启动还在那里。
+              <br />
+              当前距右边缘约 <b>{Math.round(rightDist)} pt</b>，目标 ≤150 pt。
+            </p>
+          </div>
         </section>
       )}
 

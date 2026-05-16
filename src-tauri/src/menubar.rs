@@ -67,12 +67,21 @@ pub fn install(
         let bar = NSStatusBar::systemStatusBar();
 
         let separator = bar.statusItemWithLength(LEN_EXPANDED);
+        // autosaveName persists user's ⌘+drag position across launches (macOS 10.12+)
+        let _: () = msg_send![
+            &*separator,
+            setAutosaveName: &*NSString::from_str("com.tuntun.menubar.separator")
+        ];
         if let Some(btn) = separator.button(mtm) {
             btn.setTitle(&NSString::from_str(""));
         }
 
         let toggle_len = if show_toggle_button { 28.0 } else { 0.0 };
         let toggle = bar.statusItemWithLength(toggle_len);
+        let _: () = msg_send![
+            &*toggle,
+            setAutosaveName: &*NSString::from_str("com.tuntun.menubar.toggle")
+        ];
 
         let target: Retained<ToggleTarget> = msg_send![ToggleTarget::alloc(), init];
         if let Some(btn) = toggle.button(mtm) {
@@ -137,5 +146,21 @@ pub fn set_toggle_visible(mtm: MainThreadMarker, visible: bool) {
     let slot = guarded.0.lock();
     let Some(state) = slot.as_ref() else { return };
     state.toggle.setLength(if visible { 28.0 } else { 0.0 });
-    let _ = mtm; // marker required to prove main thread
+    let _ = mtm;
+}
+
+/// Distance of the toggle button from the right edge of the main screen, in points.
+/// Returns None if not installed yet or button has no window.
+pub fn distance_from_right_edge(mtm: MainThreadMarker) -> Option<f64> {
+    use objc2_app_kit::NSScreen;
+    let guarded = STATE.get()?;
+    let slot = guarded.0.lock();
+    let state = slot.as_ref()?;
+    let btn = state.toggle.button(mtm)?;
+    let window = btn.window()?;
+    let frame = window.frame();
+    let screen = NSScreen::mainScreen(mtm)?;
+    let screen_frame = screen.frame();
+    let right_edge = screen_frame.origin.x + screen_frame.size.width;
+    Some(right_edge - (frame.origin.x + frame.size.width))
 }

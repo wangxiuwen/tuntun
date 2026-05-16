@@ -83,6 +83,7 @@ pub fn run() {
             toggle_collapsed,
             has_accessibility,
             open_accessibility_settings,
+            distance_from_right_edge,
             quit_app,
         ])
         .on_window_event(|window, event| {
@@ -289,6 +290,25 @@ fn open_accessibility_settings() {
         let _ = std::process::Command::new("open")
             .arg("x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")
             .status();
+    }
+}
+
+#[tauri::command]
+fn distance_from_right_edge(app: AppHandle) -> f64 {
+    #[cfg(target_os = "macos")]
+    {
+        let (tx, rx) = std::sync::mpsc::channel();
+        let _ = app.run_on_main_thread(move || {
+            let mtm = unsafe { objc2::MainThreadMarker::new_unchecked() };
+            let d = menubar::distance_from_right_edge(mtm).unwrap_or(-1.0);
+            let _ = tx.send(d);
+        });
+        rx.recv().unwrap_or(-1.0)
+    }
+    #[cfg(not(target_os = "macos"))]
+    {
+        let _ = app;
+        -1.0
     }
 }
 

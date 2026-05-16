@@ -1,6 +1,6 @@
 [package]
 name = "tuntun"
-version = "0.1.0"
+version = "0.3.0"
 description = "囤囤 — macOS 菜单栏图标收纳"
 authors = ["wangxiuwen"]
 edition = "2021"
@@ -36,6 +36,8 @@ objc2-app-kit = { version = "0.3", features = [
     "NSControl",
     "NSResponder",
     "NSView",
+    "NSWindow",
+    "NSScreen",
     "NSWorkspace",
     "NSEvent",
     "NSApplication",

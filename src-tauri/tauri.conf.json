@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Tuntun",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "identifier": "com.tuntun.menubar",
   "build": {
     "beforeDevCommand": "npm run dev",
@@ -33,7 +33,10 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["app", "dmg"],
+    "targets": [
+      "app",
+      "dmg"
+    ],
     "category": "Utility",
     "shortDescription": "macOS 菜单栏图标囤起来",
     "longDescription": "囤囤 (Tuntun) — macOS 菜单栏图标收纳工具，像仓鼠囤食一样把不常用的图标囤进腮帮子。HiddenBar/Ice/Dozer 风格的 NSStatusItem 方案，无私有 API。",
