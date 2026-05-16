@@ -4,7 +4,7 @@
 //!   - 注册 2 个自家 NSStatusItem: SEPARATOR (隐形扩展条) + TOGGLE (按钮)
 //!   - 折叠态: SEPARATOR.length = HUGE -> 把它左侧的其它 app 图标挤出屏幕
 //!   - 展开态: SEPARATOR.length = 1 -> 让出空间
-//!   - 用户用 ⌘ 拖动其它 app 图标到 SEPARATOR 和 TOGGLE 之间, 即为"收纳区"
+//!   - 用户用 ⌘ 拖动其它 app 图标到 SEPARATOR 左侧, 即"囤进腮帮子"
 //!
 //! 全部使用 macOS 公开 API, 无私有调用。
 

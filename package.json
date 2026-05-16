@@ -1,9 +1,9 @@
 {
-  "name": "shouna",
+  "name": "tuntun",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "收纳 — macOS 菜单栏图标隐藏 / 收纳",
+  "description": "囤囤 — macOS 菜单栏图标收纳 (像仓鼠囤食一样)",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

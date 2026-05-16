@@ -101,20 +101,20 @@ fn create_tray<R: Runtime>(app: &AppHandle<R>) -> tauri::Result<()> {
     let toggle = MenuItem::with_id(
         app,
         "toggle",
-        "折叠/展开收纳区",
+        "折叠/展开 (囤进腮帮子)",
         true,
         Some("CmdOrCtrl+Alt+H"),
     )?;
     let prefs = MenuItem::with_id(app, "prefs", "偏好设置 …", true, None::<&str>)?;
     let sep = PredefinedMenuItem::separator(app)?;
-    let about = MenuItem::with_id(app, "about", "关于收纳", true, None::<&str>)?;
+    let about = MenuItem::with_id(app, "about", "关于囤囤", true, None::<&str>)?;
     let quit = MenuItem::with_id(app, "quit", "退出", true, None::<&str>)?;
     let menu = Menu::with_items(app, &[&toggle, &prefs, &sep, &about, &quit])?;
 
     let _tray = TrayIconBuilder::with_id("main")
         .icon(tray_icon_image())
         .icon_as_template(true)
-        .tooltip("收纳 — 菜单栏图标管理")
+        .tooltip("囤囤 — 菜单栏图标囤起来")
         .menu(&menu)
         .show_menu_on_left_click(false)
         .on_menu_event(|app, event| match event.id().as_ref() {
@@ -277,7 +277,7 @@ fn toggle_collapsed(app: AppHandle) {
 
 #[tauri::command]
 fn has_accessibility() -> bool {
-    // shouna 当前 MVP 用公开 API, 不强需要辅助功能。返回 true 简化 UI。
+    // 囤囤 MVP 用公开 API, 不强需要辅助功能。返回 true 简化 UI。
     // Phase 2 接入 AX 后改为真实检测。
     true
 }

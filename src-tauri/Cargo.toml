@@ -1,13 +1,13 @@
 [package]
-name = "shouna"
+name = "tuntun"
 version = "0.1.0"
-description = "收纳 — macOS 菜单栏图标隐藏"
+description = "囤囤 — macOS 菜单栏图标收纳"
 authors = ["wangxiuwen"]
 edition = "2021"
 rust-version = "1.77"
 
 [lib]
-name = "shouna_lib"
+name = "tuntun_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

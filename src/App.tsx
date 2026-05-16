@@ -26,10 +26,10 @@ export default function App() {
       <div className="titlebar" data-tauri-drag-region />
 
       <header className="hero">
-        <div className="logo">收</div>
+        <div className="logo">🐹</div>
         <div>
-          <h1>收纳</h1>
-          <p>整理 macOS 菜单栏图标 — 隐藏不常用的，按需展开。</p>
+          <h1>囤囤</h1>
+          <p>像仓鼠囤食一样，把 macOS 菜单栏图标囤进腮帮子。</p>
         </div>
       </header>
 
@@ -48,23 +48,23 @@ export default function App() {
       <section className="card">
         <h2>当前状态</h2>
         <p className="hint">
-          收纳在菜单栏放 <b>3 个分隔符</b>: <code>•</code> <code>━</code> <code>▸</code>。<br />
-          用 <kbd>⌘</kbd> 拖动其它 app 的图标，把它们放到 <code>•</code> 和 <code>━</code> 之间（"收纳区"），点 <code>▸</code> 即可一键隐藏/展开。
+          囤囤在菜单栏放 <b>1 个隐形分隔符</b> + <b>1 个折叠按钮</b> <code>▸</code>。<br />
+          用 <kbd>⌘</kbd> 拖动其它 app 的图标到分隔符左侧（"腮帮子"），点 <code>▸</code> 折叠就能把它们囤起来。
         </p>
 
         <div className="row">
           <div>
-            <div className="label">收纳区状态</div>
+            <div className="label">腮帮子状态</div>
             <div className="value">
               {config?.collapsed ? (
-                <span className="badge on">已折叠 · 图标隐藏</span>
+                <span className="badge on">已囤起 · 图标藏在腮帮子里</span>
               ) : (
-                <span className="badge off">已展开 · 图标可见</span>
+                <span className="badge off">已吐出 · 图标可见</span>
               )}
             </div>
           </div>
           <button className="btn primary" onClick={() => invoke("toggle_collapsed")}>
-            {config?.collapsed ? "展开" : "折叠"}
+            {config?.collapsed ? "吐出来" : "囤进去"}
           </button>
         </div>
       </section>
@@ -75,7 +75,7 @@ export default function App() {
         <div className="row">
           <div>
             <div className="label">显示折叠/展开按钮 (▸)</div>
-            <div className="hint">放在菜单栏最右，单击切换收纳区</div>
+            <div className="hint">放在菜单栏最右，单击 = 囤进去/吐出来</div>
           </div>
           <Toggle
             value={config?.show_toggle_button ?? true}
@@ -86,7 +86,7 @@ export default function App() {
         <div className="row">
           <div>
             <div className="label">全局快捷键</div>
-            <div className="hint">在任意 app 里按 = 折叠/展开收纳区</div>
+            <div className="hint">在任意 app 里按 = 囤进去/吐出来</div>
           </div>
           <code className="kbd-display">{config?.hotkey ?? "⌃⌥H"}</code>
         </div>
@@ -95,11 +95,11 @@ export default function App() {
       <section className="card">
         <h2>关于</h2>
         <p className="hint">
-          收纳采用 HiddenBar / Ice / Dozer 的"3 个 NSStatusItem 分隔符"方案，<b>不使用 macOS 私有 API</b>，对系统无修改。
-          要把其它 app 的图标放到"收纳区"，需在菜单栏按 <kbd>⌘</kbd> + 拖动那些图标 (macOS 自带功能)。
+          囤囤采用 HiddenBar / Ice / Dozer 的 NSStatusItem 分隔符方案，<b>不使用 macOS 私有 API</b>，对系统无修改。
+          要把其它 app 的图标囤起来，需在菜单栏按 <kbd>⌘</kbd> + 拖动那些图标到分隔符左侧 (macOS 自带功能)。
         </p>
         <div className="meta">
-          收纳 v0.1.0 · macOS · Tauri 2 + objc2
+          囤囤 v0.1.0 · macOS · Tauri 2 + objc2
         </div>
       </section>
     </div>

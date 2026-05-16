@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Shouna",
+  "productName": "Tuntun",
   "version": "0.1.0",
-  "identifier": "com.shouna.menubar",
+  "identifier": "com.tuntun.menubar",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1430",
@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "收纳",
+        "title": "囤囤",
         "width": 700,
         "height": 620,
         "minWidth": 560,
@@ -35,8 +35,8 @@
     "active": true,
     "targets": ["app", "dmg"],
     "category": "Utility",
-    "shortDescription": "macOS 菜单栏图标隐藏",
-    "longDescription": "收纳 (Shouna) — macOS 菜单栏图标隐藏工具，用 HiddenBar/Ice/Dozer 的 3-NSStatusItem 方案，无私有 API。",
+    "shortDescription": "macOS 菜单栏图标囤起来",
+    "longDescription": "囤囤 (Tuntun) — macOS 菜单栏图标收纳工具，像仓鼠囤食一样把不常用的图标囤进腮帮子。HiddenBar/Ice/Dozer 风格的 NSStatusItem 方案，无私有 API。",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
