@@ -26,10 +26,10 @@ export default function App() {
       <div className="titlebar" data-tauri-drag-region />
 
       <header className="hero">
-        <div className="logo">🐹</div>
+        <div className="logo">囤</div>
         <div>
           <h1>囤囤</h1>
-          <p>像仓鼠囤食一样，把 macOS 菜单栏图标囤进腮帮子。</p>
+          <p>把 macOS 菜单栏图标囤起来，按需取用。</p>
         </div>
       </header>
 

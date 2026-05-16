@@ -1,7 +1,7 @@
 {
   "name": "tuntun",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "囤囤 — macOS 菜单栏图标收纳 (像仓鼠囤食一样)",
   "scripts": {

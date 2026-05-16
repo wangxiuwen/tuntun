@@ -1,4 +1,4 @@
-# 囤囤 (Tuntun) 🐹
+# 囤囤 (Tuntun)
 
 [English](./README.md) · 简体中文
 
@@ -6,33 +6,33 @@
 
 姊妹项目：剪切板管理器 [贴贴 (tietie)](https://github.com/wangxiuwen/tietie)。
 
-## ✨ 是什么
+## 是什么
 
 带刘海的 MacBook Pro 菜单栏空间紧张，第三方 app 的图标常常被挤到看不见。
 
 **囤囤** 用 HiddenBar / Ice / Dozer 的经典方案：在菜单栏放 2 个自家 NSStatusItem：
 
 ```
-[ 其它 app 图标 …  ] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ▸
-                    ↑                                  ↑
-                  分隔符                         囤/吐 按钮
+[ 其它 app 图标 ... ] -------------------------------- >
+                     ^                                 ^
+                   分隔符                       囤/吐 按钮
 ```
 
-- **吐出来**：分隔符宽 1pt，所有图标可见
-- **囤进去**：分隔符宽 10000pt → 把它左侧的图标挤出屏幕（"塞进腮帮子"）
+- **吐出来**（展开）：分隔符宽 1pt，所有图标可见
+- **囤进去**（折叠）：分隔符宽 10000pt → 把它左侧的图标挤出屏幕（"塞进腮帮子"）
 
-**没有私有 API**，没有 Accessibility，对系统零修改。
+不使用 macOS 私有 API，不需要辅助功能权限，对系统零修改。
 
-## 🚀 用法
+## 用法
 
-1. 安装并启动囤囤 (托盘出现 🐹)
-2. 菜单栏右侧会出现 `▸` 按钮（旁边一个细分隔符）
-3. **按住 ⌘ 拖动** 那些"不想常驻"的 app 图标，把它们放到分隔符左侧
-4. 点 `▸` 囤进腮帮子，再点 `▾` 吐出来 — 一键收纳
+1. 安装并启动囤囤
+2. 菜单栏右侧会出现 `>` 按钮（旁边一个细分隔符）
+3. 按住 ⌘ 拖动那些"不想常驻"的 app 图标，把它们放到分隔符左侧
+4. 点 `>` 囤进腮帮子，再点一次吐出来
 
 也可用全局快捷键 **`⌃⌥H`** 在任何 app 里 toggle。
 
-## 📦 下载
+## 下载
 
 [Releases](https://github.com/wangxiuwen/tuntun/releases) 提供：
 
@@ -43,7 +43,7 @@
 
 仅支持 macOS 11+（Big Sur 及以上）。
 
-## 🛠 本地开发
+## 本地开发
 
 ```bash
 npm install
@@ -52,22 +52,23 @@ npm run tauri:dev
 
 依赖 `Node 20+`、`Rust stable`、macOS。
 
-## 🗺 路线图
+## 路线图
 
 - [x] **v0.1** — 2-NSStatusItem 囤/吐 + 全局快捷键 + 偏好窗
 - [ ] **v0.2** — 3 段式（永远露脸 / 可囤 / 一直藏）
 - [ ] **v0.3** — 每 app 单独的"始终囤"开关（需 Accessibility）
 - [ ] **v0.4** — 拖拽时的视觉对齐辅助线
 
-## 🙏 致谢
+## 致谢
 
 技术方案参考开源项目：
+
 - [HiddenBar](https://github.com/dwarvesf/hidden) — Swift
 - [Ice](https://github.com/jordanbaird/Ice) — Swift
 - [Dozer](https://github.com/Mortennn/Dozer) — Swift
 
-囤囤是 Tauri 2 + Rust 重新实现，体积小（~6 MB），与上面的 Swift 同行价值定位一致 — 只是吉祥物换成了 🐹 仓鼠。
+囤囤是 Tauri 2 + Rust 重新实现，体积小（~6 MB）。
 
-## 📜 License
+## License
 
 MIT
