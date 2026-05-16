@@ -1,70 +1,75 @@
-# 收纳 (Shouna)
+# Shouna (收纳)
 
-> macOS 菜单栏图标隐藏 — 给被刘海挤掉的图标一个"收纳区"。
+English · [简体中文](./README.zh-CN.md)
 
-姊妹项目：剪切板管理器 [贴贴 (tietie)](https://github.com/wangxiuwen/tietie)。
+> macOS menu-bar icon hiding — a "stash" zone for icons the notch eats.
 
-## ✨ 是什么
+Sister project: clipboard manager [Tietie (贴贴)](https://github.com/wangxiuwen/tietie).
 
-带刘海的 MacBook Pro 菜单栏空间紧张，第三方 app 的图标常常被挤到看不见。
+## ✨ What it does
 
-**收纳** 用 HiddenBar / Ice / Dozer 的经典方案：在菜单栏放 2 个自家 NSStatusItem：
+On notched MacBook Pros the menu bar is cramped; third-party app icons often get pushed off-screen.
+
+**Shouna** uses the classic HiddenBar / Ice / Dozer technique: it adds two of its own `NSStatusItem`s to the menu bar:
 
 ```
-[ 其它 app 图标 …  ] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ▸
-                    ↑                                  ↑
-                  分隔符                         折叠/展开按钮
+[ other apps … ]  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ▸
+                  ↑                                 ↑
+                 separator                  toggle button
 ```
 
-- **展开态**：分隔符宽 1pt，所有图标可见
-- **折叠态**：分隔符宽 10000pt → 把它左侧的图标挤出屏幕
+- **Expanded**: separator is 1 pt wide, all icons visible
+- **Collapsed**: separator stretches to 10000 pt, pushing the icons on its left off-screen
 
-**没有私有 API**，没有 Accessibility，对系统零修改。
+**No private APIs**, no Accessibility, zero system modifications.
 
-## 🚀 用法
+## 🚀 How to use
 
-1. 安装并启动收纳
-2. 菜单栏右侧会出现 `▸` 按钮（旁边一个细分隔符）
-3. **按住 ⌘ 拖动** 那些"不想常驻"的 app 图标，把它们放到分隔符左侧
-4. 点 `▸` 折叠，再点 `▾` 展开 — 一键收纳
+1. Install and launch Shouna
+2. A `▸` button appears on the right of the menu bar (with a thin separator next to it)
+3. **Hold ⌘ and drag** the icons you want to stash so they sit to the *left* of the separator
+4. Click `▸` to collapse, click `▾` to expand — one-click stash
 
-也可用全局快捷键 **`⌃⌥H`** 在任何 app 里折叠/展开。
+Or press **`⌃⌥H`** anywhere as a global hotkey to toggle.
 
-## 📦 下载
+## 📦 Download
 
-[Releases](https://github.com/wangxiuwen/shouna/releases) 提供：
+[Releases](https://github.com/wangxiuwen/shouna/releases) ships:
 
-| 架构 | 包 |
+| Arch | Package |
 |---|---|
 | Apple Silicon | `Shouna_x.y.z_aarch64.dmg` |
 | Intel | `Shouna_x.y.z_x64.dmg` |
 
-仅支持 macOS 11+（Big Sur 及以上）。
+macOS 11+ (Big Sur and up) only.
 
-## 🛠 本地开发
+> The app is unsigned. On first launch open *System Settings → Privacy & Security* and click *Open Anyway*.
+
+## 🛠 Local development
 
 ```bash
 npm install
 npm run tauri:dev
 ```
 
-依赖 `Node 20+`、`Rust stable`、macOS。
+Requires `Node 20+`, `Rust stable`, macOS.
 
-## 🗺 路线图
+## 🗺 Roadmap
 
-- [x] **v0.1** — 2-NSStatusItem 折叠/展开 + 全局快捷键 + 偏好窗
-- [ ] **v0.2** — 3 段式（永远显示 / 可收纳 / 一直隐藏）
-- [ ] **v0.3** — 每 app 单独的"始终隐藏"开关（需 Accessibility）
-- [ ] **v0.4** — 拖拽时的视觉对齐辅助线
+- [x] **v0.1** — 2-NSStatusItem collapse/expand + global hotkey + preferences window
+- [ ] **v0.2** — 3-section layout (always-visible / stashable / always-hidden)
+- [ ] **v0.3** — per-app "always hide" toggle (needs Accessibility)
+- [ ] **v0.4** — visual alignment guides while dragging
 
-## 🙏 致谢
+## 🙏 Credits
 
-技术方案参考开源项目：
-- [HiddenBar](https://github.com/dwarvesf/hidden) — Swift
-- [Ice](https://github.com/jordanbaird/Ice) — Swift
-- [Dozer](https://github.com/Mortennn/Dozer) — Swift
+Approach informed by these open-source projects (all Swift):
 
-收纳是 Tauri 2 + Rust 重新实现，体积小（~6 MB），与上面的 Swift 同行价值定位一致。
+- [HiddenBar](https://github.com/dwarvesf/hidden)
+- [Ice](https://github.com/jordanbaird/Ice)
+- [Dozer](https://github.com/Mortennn/Dozer)
+
+Shouna re-implements the idea in Tauri 2 + Rust, smaller binary (~6 MB), same value proposition.
 
 ## 📜 License
 
