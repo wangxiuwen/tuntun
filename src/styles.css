@@ -1,0 +1,244 @@
+:root {
+  --accent: #007aff;
+  --text: rgba(20, 20, 22, 0.92);
+  --text-2: rgba(20, 20, 22, 0.62);
+  --text-3: rgba(20, 20, 22, 0.42);
+  --bg: #f5f5f7;
+  --card-bg: #ffffff;
+  --card-stroke: rgba(0, 0, 0, 0.08);
+  --warn-bg: rgba(255, 149, 0, 0.12);
+  --warn-text: #b35900;
+  --on: #34c759;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: rgba(255, 255, 255, 0.94);
+    --text-2: rgba(255, 255, 255, 0.62);
+    --text-3: rgba(255, 255, 255, 0.42);
+    --bg: #1c1c1e;
+    --card-bg: rgba(58, 58, 60, 0.85);
+    --card-stroke: rgba(255, 255, 255, 0.1);
+    --warn-bg: rgba(255, 149, 0, 0.18);
+    --warn-text: #ffb340;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC",
+    "Helvetica Neue", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text);
+}
+
+button {
+  all: unset;
+  cursor: default;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 60px 28px 40px;
+}
+
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  z-index: 100;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #007aff 0%, #af52de 100%);
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
+}
+.hero h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+.hero p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.alert strong {
+  font-size: 14px;
+}
+.alert p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--warn-text);
+  opacity: 0.85;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-stroke);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+}
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--card-stroke);
+}
+.row:first-of-type {
+  border-top: none;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+}
+.value {
+  margin-top: 4px;
+}
+.hint {
+  font-size: 12px;
+  color: var(--text-2);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+.hint code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.hint b {
+  color: var(--text);
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.badge.on {
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--accent);
+}
+.badge.off {
+  background: rgba(52, 199, 89, 0.14);
+  color: #1e8c44;
+}
+
+.btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.btn.primary {
+  background: var(--accent);
+  color: white;
+}
+.btn.primary:hover {
+  background: #006fe6;
+}
+
+.toggle {
+  width: 44px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(120, 120, 128, 0.32);
+  position: relative;
+  transition: background 120ms;
+}
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: left 120ms;
+}
+.toggle.on {
+  background: var(--on);
+}
+.toggle.on::after {
+  left: 20px;
+}
+
+kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 11px;
+}
+
+.kbd-display {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.meta {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-3);
+}

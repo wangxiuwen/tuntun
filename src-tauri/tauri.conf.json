@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Shouna",
+  "version": "0.1.0",
+  "identifier": "com.shouna.menubar",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1430",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "收纳",
+        "width": 700,
+        "height": 620,
+        "minWidth": 560,
+        "minHeight": 480,
+        "resizable": true,
+        "transparent": false,
+        "alwaysOnTop": false,
+        "visible": false,
+        "center": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["app", "dmg"],
+    "category": "Utility",
+    "shortDescription": "macOS 菜单栏图标隐藏",
+    "longDescription": "收纳 (Shouna) — macOS 菜单栏图标隐藏工具，用 HiddenBar/Ice/Dozer 的 3-NSStatusItem 方案，无私有 API。",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "11.0"
+    }
+  }
+}
